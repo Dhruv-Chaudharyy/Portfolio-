@@ -24,8 +24,7 @@ const projects = [
     tech: ["React", "Python", "MongoDB"],
     color: "#e6f0f7",
     accent: "#1a5a8a",
-    github: "https://github.com/Dhruv-Chaudharyy",
-    demo: "#",
+    github: "https://github.com/Dhruv-Chaudharyy/InsightLearnAI---V2",
   },
   {
     id: "02",
@@ -37,20 +36,19 @@ const projects = [
     tech: ["React", "Tailwind", "Framer Motion"],
     color: "#ede8f5",
     accent: "#5a3a9a",
-    github: "https://github.com/Dhruv-Chaudharyy",
-    demo: "#",
+    github: "https://github.com/Dhruv-Chaudharyy/Portfolio-",
   },
   {
     id: "03",
-    title: "Coming Soon",
+    title: "AI Gym Coach",
     year: "2026",
-    category: "TBD",
+    category: "AI / Python",
     description:
-      "Something new is in the works. Check back soon — this slot is reserved for an upcoming project that's currently in early development.",
-    tech: [],
+      "A real-time AI-powered gym trainer using MediaPipe & OpenCV for pose estimation, rule-based biomechanical analysis for exercise tracking, and LLM-based feedback with voice coaching. Built with Streamlit.",
+    tech: ["Python", "Streamlit", "MediaPipe", "Groq"],
     color: "#f0f4e8",
     accent: "#4a6a1a",
-    placeholder: true,
+    github: "https://github.com/Dhruv-Chaudharyy/Gym-coachAI",
   },
 ];
 
@@ -114,6 +112,8 @@ function SkillBar({ name, level, index }) {
     </div>
   );
 }
+
+const RESUME_URL = "https://drive.google.com/file/d/1H_sv6ErEarr4j_vqj5KKbg_4DAUFhXqg/view?usp=drive_link";
 
 export default function Portfolio() {
   const [activeNav, setActiveNav] = useState("about");
@@ -244,8 +244,6 @@ export default function Portfolio() {
           flex-direction: column;
         }
         .project-card:hover { box-shadow: 0 16px 48px rgba(15,23,42,0.1); transform: translateY(-4px); border-color: #c7d2fe; }
-        .project-card.placeholder-card { border-style: dashed; border-color: #cbd5e1; background: #f8fafc; }
-        .project-card.placeholder-card:hover { border-color: #a5b4fc; box-shadow: 0 8px 24px rgba(79,70,229,0.08); }
 
         .stat-card { padding: 28px 32px; border: 1px solid #e2e8f0; border-radius: 12px; background: #fff; transition: all 0.25s; }
         .stat-card:hover { border-color: #a5b4fc; box-shadow: 0 4px 16px rgba(79,70,229,0.08); }
@@ -336,7 +334,7 @@ export default function Portfolio() {
 
               <div style={{ display: "flex", gap: "12px", flexWrap: "wrap" }}>
                 <button className="btn-primary" onClick={() => scrollTo("projects")}>View Projects →</button>
-                <a href="#" target="_blank" rel="noopener noreferrer" style={{ textDecoration: "none" }}>
+                <a href={RESUME_URL} target="_blank" rel="noopener noreferrer" style={{ textDecoration: "none" }}>
                   <button className="btn-secondary">Download CV ↓</button>
                 </a>
               </div>
@@ -374,7 +372,7 @@ export default function Portfolio() {
                     <a href="https://github.com/Dhruv-Chaudharyy" target="_blank" rel="noopener noreferrer" style={{ textDecoration: "none", flex: 1 }}>
                       <button className="btn-secondary" style={{ width: "100%", fontSize: "10px", padding: "10px 0" }}>GitHub ↗</button>
                     </a>
-                    <a href="#" target="_blank" rel="noopener noreferrer" style={{ textDecoration: "none", flex: 1 }}>
+                    <a href={RESUME_URL} target="_blank" rel="noopener noreferrer" style={{ textDecoration: "none", flex: 1 }}>
                       <button className="btn-primary" style={{ width: "100%", fontSize: "10px", padding: "10px 0" }}>Resume ↓</button>
                     </a>
                   </div>
@@ -492,7 +490,7 @@ export default function Portfolio() {
             {projects.map((project) => (
               <div
                 key={project.id}
-                className={`project-card${project.placeholder ? " placeholder-card" : ""}`}
+                className="project-card"
                 onMouseEnter={() => setHoveredProject(project.id)}
                 onMouseLeave={() => setHoveredProject(null)}
               >
@@ -503,16 +501,10 @@ export default function Portfolio() {
                   </span>
                 </div>
 
-                <div style={{ height: "72px", marginBottom: "24px", borderRadius: "8px", background: project.placeholder ? "#f1f5f9" : project.color, display: "flex", alignItems: "center", justifyContent: "space-between", padding: "0 20px", position: "relative", overflow: "hidden" }}>
-                  {project.placeholder ? (
-                    <span style={{ fontFamily: "'DM Mono', monospace", fontSize: "20px", color: P.border, letterSpacing: "0.1em" }}>· · ·</span>
-                  ) : (
-                    <>
-                      <div style={{ width: "36px", height: "36px", borderRadius: "50%", border: `2px solid ${project.accent}`, opacity: 0.45 }} />
-                      <div style={{ width: "20px", height: "20px", borderRadius: "3px", background: project.accent, opacity: 0.2 }} />
-                    </>
-                  )}
-                  <span style={{ fontFamily: "'Playfair Display', serif", fontSize: "11px", color: project.placeholder ? P.textFaint : project.accent, opacity: 0.7, letterSpacing: "0.05em", position: "absolute", right: "16px", bottom: "10px" }}>
+                <div style={{ height: "72px", marginBottom: "24px", borderRadius: "8px", background: project.color, display: "flex", alignItems: "center", justifyContent: "space-between", padding: "0 20px", position: "relative", overflow: "hidden" }}>
+                  <div style={{ width: "36px", height: "36px", borderRadius: "50%", border: `2px solid ${project.accent}`, opacity: 0.45 }} />
+                  <div style={{ width: "20px", height: "20px", borderRadius: "3px", background: project.accent, opacity: 0.2 }} />
+                  <span style={{ fontFamily: "'Playfair Display', serif", fontSize: "11px", color: project.accent, opacity: 0.7, letterSpacing: "0.05em", position: "absolute", right: "16px", bottom: "10px" }}>
                     {project.year}
                   </span>
                 </div>
@@ -520,43 +512,29 @@ export default function Portfolio() {
                 <h3 style={{
                   fontSize: "19px", fontWeight: 700, marginBottom: "10px",
                   letterSpacing: "-0.01em", lineHeight: 1.25,
-                  color: project.placeholder ? P.textFaint : hoveredProject === project.id ? project.accent : P.text,
+                  color: hoveredProject === project.id ? project.accent : P.text,
                   transition: "color 0.25s",
-                  fontStyle: project.placeholder ? "italic" : "normal",
                 }}>
                   {project.title}
                 </h3>
 
-                <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: "14px", color: project.placeholder ? P.textFaint : P.textMuted, lineHeight: 1.75, marginBottom: "22px", fontWeight: 300, flexGrow: 1 }}>
+                <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: "14px", color: P.textMuted, lineHeight: 1.75, marginBottom: "22px", fontWeight: 300, flexGrow: 1 }}>
                   {project.description}
                 </p>
 
-                {!project.placeholder && (
-                  <div style={{ display: "flex", flexWrap: "wrap", gap: "7px", marginBottom: "24px" }}>
-                    {project.tech.map(t => (
-                      <span key={t} style={{ fontFamily: "'DM Mono', monospace", fontSize: "10px", letterSpacing: "0.08em", textTransform: "uppercase", color: project.accent, border: `1px solid ${project.color}`, background: project.color, padding: "4px 10px", borderRadius: "4px" }}>
-                        {t}
-                      </span>
-                    ))}
-                  </div>
-                )}
+                <div style={{ display: "flex", flexWrap: "wrap", gap: "7px", marginBottom: "24px" }}>
+                  {project.tech.map(t => (
+                    <span key={t} style={{ fontFamily: "'DM Mono', monospace", fontSize: "10px", letterSpacing: "0.08em", textTransform: "uppercase", color: project.accent, border: `1px solid ${project.color}`, background: project.color, padding: "4px 10px", borderRadius: "4px" }}>
+                      {t}
+                    </span>
+                  ))}
+                </div>
 
-                {project.placeholder ? (
-                  <div style={{ marginTop: "auto", paddingTop: "8px" }}>
-                    <div style={{ border: `1.5px dashed ${P.border}`, borderRadius: "6px", padding: "14px", textAlign: "center", fontFamily: "'DM Mono', monospace", fontSize: "10px", letterSpacing: "0.12em", textTransform: "uppercase", color: P.textFaint }}>
-                      Coming soon — stay tuned
-                    </div>
-                  </div>
-                ) : (
-                  <div style={{ display: "flex", gap: "10px", marginTop: "auto" }}>
-                    <a href={project.demo} target="_blank" rel="noopener noreferrer" style={{ flex: 1, textDecoration: "none" }}>
-                      <button className="btn-primary" style={{ width: "100%", fontSize: "10px", padding: "10px 0" }}>Live Demo ↗</button>
-                    </a>
-                    <a href={project.github} target="_blank" rel="noopener noreferrer" style={{ flex: 1, textDecoration: "none" }}>
-                      <button className="btn-secondary" style={{ width: "100%", fontSize: "10px", padding: "10px 0" }}>GitHub ↗</button>
-                    </a>
-                  </div>
-                )}
+                <div style={{ marginTop: "auto" }}>
+                  <a href={project.github} target="_blank" rel="noopener noreferrer" style={{ textDecoration: "none", display: "block" }}>
+                    <button className="btn-secondary" style={{ width: "100%", fontSize: "10px", padding: "10px 0" }}>GitHub ↗</button>
+                  </a>
+                </div>
               </div>
             ))}
           </div>
@@ -615,7 +593,7 @@ export default function Portfolio() {
             <a href="https://github.com/Dhruv-Chaudharyy" target="_blank" rel="noopener noreferrer" style={{ textDecoration: "none" }}>
               <button className="btn-secondary">GitHub ↗</button>
             </a>
-            <a href="#" target="_blank" rel="noopener noreferrer" style={{ textDecoration: "none" }}>
+            <a href={RESUME_URL} target="_blank" rel="noopener noreferrer" style={{ textDecoration: "none" }}>
               <button className="btn-secondary">Resume ↓</button>
             </a>
           </div>
