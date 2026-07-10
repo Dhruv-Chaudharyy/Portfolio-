@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 
 const skills = [
+  { name: "Java", level: 82 },
   { name: "React", level: 78 },
   { name: "JavaScript", level: 88 },
   { name: "Python", level: 80 },
@@ -8,9 +9,11 @@ const skills = [
   { name: "Tailwind CSS", level: 90 },
   { name: "Node.js", level: 75 },
   { name: "MongoDB", level: 72 },
-  { name: "C++ (OOP)", level: 65 },
+  { name: "Java (OOP)", level: 75 },
   { name: "Git", level: 85 },
   { name: "REST APIs", level: 82 },
+  { name: "NLP", level: 62 },
+  { name: "Numpy", level: 72 },
 ];
 
 const projects = [
